@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<meta name="theme-color" content="#07110d" />
+<title>AegisAI · GenAI Reasoning Agent</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Manrope:wght@400;500;600;700;800&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/static/style.css" />
+</head>
+<body>
+  <div class="noise"></div>
+  <div class="grid"></div>
+  <div class="orb orb-a"></div><div class="orb orb-b"></div>
+
+  <nav class="nav shell">
+    <div class="brand"><span class="brand-mark"><span></span></span><div><strong>AEGIS<span>AI</span></strong><small>APK SECURITY LAB</small></div></div>
+    <div class="nav-links"><a href="/" class="nav-link">← Static Analysis</a><a href="/reasoning" class="nav-link active">Reasoning Agent</a></div>
+    <div class="nav-status"><i></i> ENGINE ONLINE</div>
+  </nav>
+
+  <main class="shell">
+    <section class="hero" style="padding-bottom:0">
+      <div class="hero-copy reveal">
+        <div class="eyebrow"><span></span> GENAI REASONING AGENT</div>
+        <h1>Reasoning over<br><em>the evidence.</em></h1>
+        <p>This agent does not scan files. It takes the findings and IOCs already gathered by the Static Analysis and Threat Intelligence Agents, and reasons over them to infer likely intent, reconstruct a plausible attack chain, and explain its confidence.</p>
+      </div>
+    </section>
+
+    <section class="scanner reveal delay-2" id="noReportState">
+      <div class="section-top"><div><span class="mini-label">STATUS</span><h2>No report loaded</h2></div></div>
+      <p style="padding:24px; color:var(--muted)">Run an analysis on the <a href="/" style="color:var(--accent)">Static Analysis</a> page first, then click "Send to GenAI Reasoning Agent."</p>
+    </section>
+
+    <section class="scanner reveal delay-2 hidden" id="reportState">
+      <div class="section-top"><div><span class="mini-label">INPUT EVIDENCE</span><h2 id="appTitle">—</h2></div><span class="safe-pill" id="findingsBadge">— findings received</span></div>
+      <div class="panel" id="sourceSummary" style="margin:0 24px 24px"></div>
+
+      <div class="section-top"><div><span class="mini-label">01 / REASONING</span><h2>Agent Output</h2></div><span class="safe-pill" id="reasonStatus">● WAITING</span></div>
+      <div id="reasonLoading" class="panel explanation" style="margin:0 24px">Contacting GenAI Reasoning Agent via Ollama…</div>
+
+      <div id="reasonResult" class="hidden">
+        <div class="panel explanation" id="summaryBox" style="margin:0 24px 20px"></div>
+
+        <div class="grid-2" style="padding:0 24px">
+          <div class="panel">
+            <div class="mini-label">LIKELY INTENT</div>
+            <div id="intentBox" class="risk-label" style="margin-top:10px">—</div>
+          </div>
+          <div class="panel">
+            <div class="mini-label">CONFIDENCE REASONING</div>
+            <p id="confidenceBox" style="margin-top:10px; color:var(--muted)">—</p>
+          </div>
+        </div>
+
+        <div class="section-top"><div><span class="mini-label">02 / ATTACK CHAIN</span><h2>Reconstructed sequence</h2></div></div>
+        <div id="attackChainBox" class="panel" style="margin:0 24px 24px"></div>
+
+        <div class="section-top"><div><span class="mini-label">03 / KEY FINDINGS CONSIDERED</span><h2>What drove this assessment</h2></div></div>
+        <div id="concerningBox" style="padding:0 24px 24px"></div>
+
+        <div class="section-top"><div><span class="mini-label">04 / MITRE ATT&CK MOBILE</span><h2>Technique mapping</h2></div></div>
+        <div id="mitreBox" class="panel" style="margin:0 24px 40px"></div>
+      </div>
+    </section>
+  </main>
+
+  <script src="/static/reasoning.js"></script>
+</body>
+</html>

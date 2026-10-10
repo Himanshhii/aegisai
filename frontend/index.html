@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<meta name="theme-color" content="#07110d" />
+<title>AegisAI · APK Security Scanner</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Manrope:wght@400;500;600;700;800&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/static/style.css" />
+</head>
+<body>
+  <div class="noise"></div>
+  <div class="grid"></div>
+  <div class="orb orb-a"></div><div class="orb orb-b"></div>
+
+  <nav class="nav shell">
+    <div class="brand"><span class="brand-mark"><span></span></span><div><strong>AEGIS<span>AI</span></strong><small>APK SECURITY LAB</small></div></div>
+    <div class="nav-links"><a href="/" class="nav-link active">Static Analysis</a><a href="/reasoning" class="nav-link">Reasoning</a><a href="/threat-intel" class="nav-link">Threat Intel</a><a href="/network" class="nav-link">Network</a><a href="/sandbox" class="nav-link">Sandbox</a><a href="/codegraph" class="nav-link">CodeGraph</a><a href="/verifier" class="nav-link">Verifier</a><a href="/report" class="nav-link">Report</a></div>
+    <div class="nav-status"><i></i> ENGINE ONLINE</div>
+  </nav>
+
+  <main class="shell">
+    <section class="hero">
+      <div class="hero-copy reveal">
+        <div class="eyebrow"><span></span> STATIC ANALYSIS · NO EXECUTION</div>
+        <h1>See what's hiding<br><em>inside the APK.</em></h1>
+        <p>Inspect Android packages for risky permissions, manifest signals, certificates and security findings — without ever running the app.</p>
+        <div class="trust-row"><span>◈ Manifest</span><span>◈ Permissions</span><span>◈ Certificate</span><span>◈ Threat signals</span></div>
+      </div>
+      <div class="hero-core reveal delay-1" aria-hidden="true">
+        <div class="core-ring ring-1"></div><div class="core-ring ring-2"></div><div class="core-ring ring-3"></div>
+        <div class="core-center"><div class="shield">⌁</div><b>AEGIS</b><small>SCAN CORE</small></div>
+        <span class="float-tag tag-1">MANIFEST</span><span class="float-tag tag-2">CERTIFICATE</span><span class="float-tag tag-3">PERMISSIONS</span>
+      </div>
+    </section>
+
+    <section class="scanner reveal delay-2" id="scanner">
+      <div class="section-top"><div><span class="mini-label">01 / INPUT</span><h2>Upload an APK</h2></div><span class="safe-pill">● SAFE · OFFLINE-FIRST</span></div>
+      <label class="dropzone" id="dropzone" for="apkFile">
+        <input type="file" id="apkFile" accept=".apk" hidden />
+        <div class="drop-icon"><span>↑</span></div>
+        <div class="drop-copy"><strong id="fileTitle">Drop your APK here</strong><span id="fileHint">or click to browse · .apk files only</span></div>
+        <div class="file-meta" id="fileMeta">READY</div>
+        <div class="scan-line"></div>
+      </label>
+      <div class="action-row">
+        <span id="status" class="status">Waiting for an APK</span>
+        <button id="analyzeBtn"><span class="btn-icon">✦</span> Analyze APK <span class="arrow">→</span></button>
+      </div>
+    </section>
+
+    <section id="results" class="results hidden">
+      <div class="results-heading"><div><span class="mini-label">02 / REPORT</span><h2>Security intelligence</h2></div><button class="ghost" id="newScan">+ New scan</button></div>
+
+      <div class="summary-grid">
+        <div class="panel identity" id="appInfo"></div>
+        <div class="panel risk-panel" id="riskBox"></div>
+      </div>
+
+      <div class="section-title"><span class="mini-label">03 / FINDINGS</span><span id="findingCount"></span></div>
+      <div id="findings" class="findings"></div>
+
+      <div class="section-title"><span class="mini-label">04 / INDICATORS</span><span>IOCS</span></div>
+      <div id="iocs" class="panel intelligence-grid"></div>
+
+      <div class="section-title"><span class="mini-label">05 / MITRE</span><span>ATT&CK MOBILE</span></div>
+      <div id="mitre" class="panel intelligence-grid"></div>
+
+      <div class="section-title"><span class="mini-label">06 / ATTACK CHAIN</span><span>EVIDENCE CORRELATION</span></div>
+      <div id="attackChain" class="panel chain"></div>
+
+      <div class="section-title"><span class="mini-label">07 / CAPABILITIES</span><span>IMPLEMENTATION STATUS</span></div>
+      <div id="capabilities" class="panel capabilities"></div>
+
+      <div class="section-title ai-title"><span class="mini-label">08 / AI ASSESSMENT</span><span>OLLAMA</span></div>
+      <div id="explanation" class="panel explanation"></div>
+      <div class="reasoning-cta">
+        <p>Want a deeper breakdown — attacker intent, attack-chain reconstruction, MITRE mapping, confidence reasoning?</p>
+        <button id="sendToReasoningBtn" class="btn-secondary">Send to GenAI Reasoning Agent <span class="arrow">→</span></button>
+      </div>
+    </section>
+  </main>
+  <footer class="shell footer"><span>AEGISAI / STATIC ANALYSIS AGENT</span><span>ANALYZE · UNDERSTAND · DEFEND</span></footer>
+  <script src="/static/app.js"></script>
+</body>
+</html>
